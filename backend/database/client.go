@@ -23,7 +23,12 @@ func Connect(connectionString string) error {
 }
 
 //Migrate create/updates database table
-func Migrate(table *entity.Product) {
-	Connector.AutoMigrate(&table)
+// func Migrate(table ...*gorm.Model) {
+// 	Connector.AutoMigrate(&table)
+// 	log.Println("Table migrated")
+// }
+
+func Migrate(product *entity.Product, user *entity.User) {
+	Connector.AutoMigrate(&product, &user)
 	log.Println("Table migrated")
 }

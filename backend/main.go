@@ -21,6 +21,8 @@ func main() {
 }
 
 func initaliseHandlers(router *mux.Router) {
+	router.HandleFunc("/signup", controllers.SignUp).Methods("POST")
+	router.HandleFunc("/signin", controllers.SignIn).Methods("POST")
 	router.HandleFunc("/create", controllers.CreateProduct).Methods("POST")
 	router.HandleFunc("/get", controllers.GetAllProducts).Methods("GET")
 	router.HandleFunc("/get/{sku}", controllers.GetProductBySKU).Methods("GET")
@@ -42,5 +44,6 @@ func initDB() {
 	if err != nil {
 		panic(err.Error())
 	}
-	database.Migrate(&entity.Product{})
+
+	database.Migrate(&entity.Product{}, &entity.User{})
 }

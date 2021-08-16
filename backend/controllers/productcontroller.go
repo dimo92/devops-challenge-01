@@ -8,7 +8,6 @@ import (
 
 	"github.com/dimo92/devops-challenge-01/database"
 	"github.com/dimo92/devops-challenge-01/entity"
-
 	"github.com/gorilla/mux"
 )
 
