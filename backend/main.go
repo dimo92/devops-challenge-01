@@ -1,14 +1,14 @@
 package main
 
 import (
-	"github.com/dimo92/devops-challenge-01/controllers"
-	"github.com/dimo92/devops-challenge-01/database"
-	"github.com/dimo92/devops-challenge-01/entity"
 	"log"
 	"net/http"
 
+	"github.com/dimo92/devops-challenge-01/controllers"
+	"github.com/dimo92/devops-challenge-01/database"
+	"github.com/dimo92/devops-challenge-01/entity"
+
 	"github.com/gorilla/mux"
-	_ "github.com/jinzhu/gorm/dialects/mysql" //Required for MySQL dialect
 )
 
 func main() {

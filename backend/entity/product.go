@@ -1,10 +1,11 @@
 package entity
 
 type Product struct {
-	SKU         uint64 `gorm:"primaryKey" json:"SKU"`
-	Name        string `json:"Name"`
-	Brand       string `json:"Brand"`
-	Model       string `json:"Model"`
-	Price       string `json:"Price"`
-	Description string `json:"Description"`
+	ID          uint   `json:"id" gorm:"primaryKey,autoIncrement, not null"`
+	SKU         string `json:"sku" gorm:"unique"`
+	Name        string `json:"name"`
+	Brand       string `json:"brand"`
+	Model       string `json:"model"`
+	Price       string `json:"price"`
+	Description string `json:"description"`
 }
