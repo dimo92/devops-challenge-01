@@ -33,7 +33,7 @@ func initaliseHandlers(router *mux.Router) {
 func initDB() {
 	config :=
 		database.Config{
-			ServerName: "localhost:3306",
+			ServerName: "db:3306",
 			User:       "db_user_catalog",
 			Password:   "db_user_pass_catalog",
 			DB:         "catalog",
