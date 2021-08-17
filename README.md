@@ -1,5 +1,9 @@
 # devops-challenge-01
 
+# DevOps challenge definition
+- https://github.com/dimo92/test
+
+
 ## Template Go / REST / Gorm
 - https://github.com/qiangxue/go-rest-api
 
