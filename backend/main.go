@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -12,12 +13,14 @@ import (
 	"github.com/gorilla/mux"
 )
 
-var db_endpoint = os.Getenv("DB_ENDPOINT")
 var db_name = os.Getenv("DB_NAME")
 var db_user = os.Getenv("DB_USER")
 var db_password = os.Getenv("DB_PASSWORD")
+var db_host = os.Getenv("DB_HOST")
+var db_port = os.Getenv("DB_PORT")
 
 func main() {
+	fmt.Println(db_name, " - ", db_user, " - ", db_password, " - ", db_host, " - ", db_port, " - ")
 	initDB()
 	log.Println("Starting the HTTP server on port 8090")
 
@@ -39,10 +42,11 @@ func initaliseHandlers(router *mux.Router) {
 func initDB() {
 	config :=
 		database.Config{
-			DB:         db_endpoint,
-			ServerName: db_name,
-			User:       db_user,
-			Password:   db_password,
+			Name:     db_name,
+			User:     db_user,
+			Password: db_password,
+			Host:     db_host,
+			Port:     db_port,
 		}
 
 	connectionString := database.GetConnectionString(config)
