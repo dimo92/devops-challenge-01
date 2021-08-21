@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/dimo92/devops-challenge-01/controllers"
 	"github.com/dimo92/devops-challenge-01/database"
@@ -10,6 +11,11 @@ import (
 
 	"github.com/gorilla/mux"
 )
+
+var db_name = os.Getenv("DB_PORT")
+var db_user = os.Getenv("DB_USER")
+var db_password = os.Getenv("DB_PASSWORD")
+var db_port = os.Getenv("DB_PORT")
 
 func main() {
 	initDB()
@@ -33,10 +39,10 @@ func initaliseHandlers(router *mux.Router) {
 func initDB() {
 	config :=
 		database.Config{
-			ServerName: "db:3306",
-			User:       "db_user_catalog",
-			Password:   "db_user_pass_catalog",
-			DB:         "catalog",
+			ServerName: db_name,
+			User:       db_user,
+			Password:   db_password,
+			DB:         db_port,
 		}
 
 	connectionString := database.GetConnectionString(config)
