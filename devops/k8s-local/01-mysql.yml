@@ -1,32 +1,36 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: db
+  name: service-db-mysql
+  labels:
+    app: service-db-mysql
+    service: service-db-mysql
 spec:
   ports:
-  - port: 3306
+    - port: 3306
+      name: http
   selector:
-    app: db
-  clusterIP: None
+    app: service-db-mysql
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db
+  name: service-db-mysql
+  labels:
+    app: service-db-mysql
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: db
-  strategy:
-    type: Recreate
+      app: service-db-mysql
   template:
     metadata:
       labels:
-        app: db
+        app: service-db-mysql
     spec:
       containers:
-      - image: mysql:5.6
-        name: db
+      - name: mysql
+        image: mysql:5.6
         resources:
           requests:
             memory: "64Mi"
@@ -45,11 +49,3 @@ spec:
           value: "catalog"  
         ports:
         - containerPort: 3306
-          name: db
-      #   volumeMounts:
-      #   - name: mysql-persistent-storage
-      #     mountPath: /var/lib/mysql
-      # volumes:
-      # - name: mysql-persistent-storage
-      #   persistentVolumeClaim:
-      #     claimName: mysql-pv-claim
