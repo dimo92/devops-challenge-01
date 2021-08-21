@@ -12,10 +12,10 @@ import (
 	"github.com/gorilla/mux"
 )
 
-var db_name = os.Getenv("DB_PORT")
+var db_endpoint = os.Getenv("DB_ENDPOINT")
+var db_name = os.Getenv("DB_NAME")
 var db_user = os.Getenv("DB_USER")
 var db_password = os.Getenv("DB_PASSWORD")
-var db_port = os.Getenv("DB_PORT")
 
 func main() {
 	initDB()
@@ -39,10 +39,10 @@ func initaliseHandlers(router *mux.Router) {
 func initDB() {
 	config :=
 		database.Config{
+			DB:         db_endpoint,
 			ServerName: db_name,
 			User:       db_user,
 			Password:   db_password,
-			DB:         db_port,
 		}
 
 	connectionString := database.GetConnectionString(config)

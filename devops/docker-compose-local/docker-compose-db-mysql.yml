@@ -6,9 +6,9 @@ services:
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: catalog
       MYSQL_USER: db_user_catalog
       MYSQL_PASSWORD: db_user_pass_catalog
-      MYSQL_DATABASE: catalog
     ports:
       - "3306:3306"
     volumes:
