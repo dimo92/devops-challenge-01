@@ -7,9 +7,9 @@ import (
 	"net/http"
 	"time"
 
-	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/dimo92/devops-challenge-01/database"
 	"github.com/dimo92/devops-challenge-01/entity"
+	jwt "github.com/golang-jwt/jwt/v4"
 
 	"golang.org/x/crypto/bcrypt"
 )
