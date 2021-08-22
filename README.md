@@ -67,5 +67,33 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
 ```
 
+# Rust path
+```
+sudo apt-get update -y
+sudo apt-get install -y cargo
+sudo apt-get install -y pkg-config
+
+https://rustup.rs/
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | zsh
+
+#Create project
+cargo new api-products-rust && cd api-products-rust
+cargo install cargo-edit
+cargo add tide
+
+https://medium.com/sean3z/building-a-restful-crud-api-with-rust-1867308352d8
+cargo new api-products-go --bin && cd api-products-go
+
+rustup default nightly
+rustup update && cargo update
+cargo --version && rustc --version
+
+seguir desde aca, reset env & install latest version
+https://github.com/TmLev/crud-rest-api-rust-rocket-diesel-postgres/blob/master/src/models.rs
+```
+
 ## Technical debt / Nice to have
     - avoid autoincrement on insert failure, prevent jump between id's: innodb_autoinc_lock_mode=2
+
