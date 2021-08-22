@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-second
+spec:
+  type: ClusterIP
+  selector:
+    app: test-second
+  ports:
+  - name: http
+    port: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-second
+  labels:
+    app: test-second
+spec:
+  selector:
+    matchLabels:
+      app: test-second
+  template:
+    metadata:
+      labels:
+        app: test-second
+    spec:
+      containers:
+      - name: sample-second
+        image: tutum/hello-world #dimo1992/research:flask-two-1.0        
