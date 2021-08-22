@@ -58,5 +58,14 @@ terraform init \
 terraform plan    
 ```
 
+## Ingress setup
+
+```
+#Install ingress-controller and k8s resources pre-requisites for ingress-nginx (rbac, serviceaccount, etc)
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.44.0/deploy/static/provider/cloud/deploy.yaml
+
+kubectl delete -A ValidatingWebhookConfiguration ingress-nginx-admission
+```
+
 ## Technical debt / Nice to have
     - avoid autoincrement on insert failure, prevent jump between id's: innodb_autoinc_lock_mode=2
