@@ -8,9 +8,9 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: test-first
+      name: service-api-products
       port:
-        number: 8080
+        number: 8090
   rules:
   - host: kubernetes.docker.internal
     http:
@@ -19,13 +19,13 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: test-first
+            name: service-api-products
             port:
-              number: 8080
-      - path: /two/?(.*)
+              number: 8090
+      - path: /two(/|$)(.*)
         pathType: Prefix
         backend:
           service:
-            name: service-hello-world
+            name: test-second
             port:
-              number: 8080
+              number: 80
