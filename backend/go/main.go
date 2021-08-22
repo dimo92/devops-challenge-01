@@ -20,7 +20,6 @@ var db_host = os.Getenv("DB_HOST")
 var db_port = os.Getenv("DB_PORT")
 
 func main() {
-	fmt.Println(db_name, " - ", db_user, " - ", db_password, " - ", db_host, " - ", db_port, " - ")
 	initDB()
 	log.Println("Starting the HTTP server on port 8090")
 
