@@ -95,5 +95,6 @@ https://github.com/TmLev/crud-rest-api-rust-rocket-diesel-postgres/blob/master/s
 ```
 
 ## Technical debt / Nice to have
+    - Improve JWT Middleware --> https://github.com/dimo92/go-jwt-middleware
     - avoid autoincrement on insert failure, prevent jump between id's: innodb_autoinc_lock_mode=2
 
