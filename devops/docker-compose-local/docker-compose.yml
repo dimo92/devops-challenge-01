@@ -27,5 +27,14 @@ services:
     ports:
       - 8081:80
 
+  api-products:
+    build:
+      context: ../../backend/go
+      dockerfile: Dockerfile
+    links:
+      - db
+    restart: always
+    ports:
+      - 8090:8090      
 volumes:
   dbdata:
