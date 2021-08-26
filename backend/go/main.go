@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -31,11 +30,11 @@ func main() {
 func initaliseHandlers(router *mux.Router) {
 	router.HandleFunc("/signup", controllers.SignUp).Methods("POST")
 	router.HandleFunc("/signin", controllers.SignIn).Methods("POST")
-	router.HandleFunc("/create", controllers.CreateProduct).Methods("POST")
-	router.HandleFunc("/get", controllers.GetAllProducts).Methods("GET")
-	router.HandleFunc("/get/{sku}", controllers.GetProductBySKU).Methods("GET")
-	router.HandleFunc("/update/{sku}", controllers.UpdateProductBySKU).Methods("PUT")
-	router.HandleFunc("/delete/{sku}", controllers.DeleteProductBySKU).Methods("DELETE")
+	router.HandleFunc("/create", controllers.IsAuthorized(controllers.CreateProduct)).Methods("POST")
+	router.HandleFunc("/get", controllers.IsAuthorized(controllers.GetAllProducts)).Methods("GET")
+	router.HandleFunc("/get/{sku}", controllers.IsAuthorized(controllers.GetProductBySKU)).Methods("GET")
+	router.HandleFunc("/update/{sku}", controllers.IsAuthorized(controllers.UpdateProductBySKU)).Methods("PUT")
+	router.HandleFunc("/delete/{sku}", controllers.IsAuthorized(controllers.DeleteProductBySKU)).Methods("DELETE")
 }
 
 func initDB() {
