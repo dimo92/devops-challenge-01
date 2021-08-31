@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-db-mysql
+  labels:
+    app: service-db-mysql
+    service: service-db-mysql
+spec:
+  ports:
+    - port: 3306
+      name: http
+  selector:
+    app: service-db-mysql
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-db-mysql
+  labels:
+    app: service-db-mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-db-mysql
+  template:
+    metadata:
+      labels:
+        app: service-db-mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.6
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "1000m"
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "admin"
+        - name: MYSQL_USER
+          value: "db_user_catalog"
+        - name: MYSQL_PASSWORD
+          value: "db_user_pass_catalog"
+        - name: MYSQL_DATABASE
+          value: "catalog"  
+        ports:
+        - containerPort: 3306
