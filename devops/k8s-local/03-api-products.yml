@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: api-products
-        image: dimo1992/research:api-product-02
+        image: dimo1992/research:api-product-03
         resources:
           requests:
             memory: "64Mi"
