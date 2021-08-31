@@ -20,6 +20,11 @@
 
     - How to generate Space & SpaceAccess Token / SpaceSecret Key? 
         - https://docs.digitalocean.com/reference/api/spaces-api/
+
+    - Setup ingress controller for DO (and another on-premises/clouds environments)
+        - https://kubernetes.github.io/ingress-nginx/deploy/
+    - Cert-Manager Setup
+        - https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-with-cert-manager-on-digitalocean-kubernetes
             
 ## Workspace tools/config pre-requisites
 - tfswitch: tool form manage Terraform versions
